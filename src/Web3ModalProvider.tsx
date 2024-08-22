@@ -10,7 +10,7 @@ import React from "react";
 const queryClient = new QueryClient();
 
 // 1. Get projectId from https://cloud.walletconnect.com
-const projectId = "2b8a01b3d1b9cf90890b4bb627f64f08";
+const projectId = "bfd82f2c0c5a89a844e3f1ab45da4848";
 
 // 2. Create wagmiConfig
 const metadata = {
@@ -29,6 +29,12 @@ const config = defaultWagmiConfig({
 
 // 3. Create modal
 createWeb3Modal({
+  themeMode: "dark",
+  themeVariables: {
+    "--w3m-color-mix": "#690251",
+    "--w3m-color-mix-strength": 100,
+    "--w3m-accent": "#026269",
+  },
   metadata,
   wagmiConfig: config,
   projectId,
