@@ -8,7 +8,7 @@ import { useAccount } from "wagmi";
 import { publicClient, walletClient } from "./config";
 
 import { wagmiAbi } from "../NFTMarketplace";
-import { formatGwei, parseEther, parseUnits } from "viem";
+import { formatEther, formatGwei, parseEther, parseUnits } from "viem";
 
 function Jwt() {
   const [price, setPrice] = useState("");
@@ -94,6 +94,9 @@ function Jwt() {
 
     items.forEach((item) => {
       console.log(`Token ID: ${item.tokenId}, Price: ${item.price}`);
+      console.log(
+        `Token ID: ${item.tokenId}, Price: ${formatEther(item.price)}`
+      );
     });
   };
 
@@ -107,7 +110,7 @@ function Jwt() {
       abi: wagmiAbi,
       functionName: "createMarketSale",
       account: publickey as `0x${string}`,
-      args: [BigInt(10)],
+      args: [BigInt(11)],
       value: priceInEther, ///1eth
     });
     console.log(request);
